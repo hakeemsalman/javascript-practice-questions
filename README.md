@@ -9,6 +9,7 @@
   - [Find a prime number in an array](#find-a-prime-number-in-an-array)
   - [Find an object in an array by one of its properties](#find-an-object-in-an-array-by-one-of-its-properties)
   - [Find the index of a prime number in an array](#find-the-index-of-a-prime-number-in-an-array)
+  - [Sorting array of objects](#sorting-array-of-objects)
 
 
 ## Find a prime number in an array
@@ -64,4 +65,35 @@ function isPrime(element) {
 console.log([4, 6, 8, 9, 12].findIndex(isPrime)); // -1, not found
 console.log([4, 6, 7, 9, 12].findIndex(isPrime)); // 2 (array[2] is 7)
 
+```
+
+## Sorting array of objects
+
+```js
+const items = [
+  { name: "Edward", value: 21 },
+  { name: "Sharpe", value: 37 },
+  { name: "And", value: 45 },
+  { name: "The", value: -12 },
+  { name: "Magnetic", value: 13 },
+  { name: "Zeros", value: 37 },
+];
+
+// sort by value
+items.sort((a, b) => a.value - b.value);
+
+// sort by name
+items.sort((a, b) => {
+  const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+  const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+});
 ```
