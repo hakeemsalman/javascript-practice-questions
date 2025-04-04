@@ -10,7 +10,8 @@
   - [Find an object in an array by one of its properties](#find-an-object-in-an-array-by-one-of-its-properties)
   - [Find the index of a prime number in an array](#find-the-index-of-a-prime-number-in-an-array)
   - [Sorting array of objects](#sorting-array-of-objects)
-  - [Undo/Redo Functionality](#undo-redo-functionality)
+  - [Undo/Redo Functionality](#undoredo-functionality)
+  - [Matching Brackets](#matching-brackets)
 
 
 ## Find a prime number in an array
@@ -114,5 +115,23 @@ function undo() {
   const lastAction = undoStack.pop();
   redoStack.push(lastAction);
   // reverse action
+}
+```
+
+## Matching Brackets
+
+```js
+function isValid(s) {
+  const stack = [];
+  const map = { ')': '(', '}': '{', ']': '[' };
+
+  for (let char of s) {
+    if (['(', '{', '['].includes(char)) {
+      stack.push(char);
+    } else {
+      if (stack.pop() !== map[char]) return false;
+    }
+  }
+  return stack.length === 0;
 }
 ```
