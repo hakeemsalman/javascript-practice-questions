@@ -10,6 +10,7 @@
   - [Find an object in an array by one of its properties](#find-an-object-in-an-array-by-one-of-its-properties)
   - [Find the index of a prime number in an array](#find-the-index-of-a-prime-number-in-an-array)
   - [Sorting array of objects](#sorting-array-of-objects)
+  - [Undo/Redo Functionality](#undo-redo-functionality)
 
 
 ## Find a prime number in an array
@@ -96,4 +97,22 @@ items.sort((a, b) => {
   // names must be equal
   return 0;
 });
+```
+
+## Undo/Redo Functionality
+
+```js
+const undoStack = [];
+const redoStack = [];
+
+function doAction(action) {
+  undoStack.push(action);
+  // perform action
+}
+
+function undo() {
+  const lastAction = undoStack.pop();
+  redoStack.push(lastAction);
+  // reverse action
+}
 ```
