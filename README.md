@@ -12,6 +12,7 @@
   - [Sorting array of objects](#sorting-array-of-objects)
   - [Undo/Redo Functionality](#undoredo-functionality)
   - [Matching Brackets](#matching-brackets)
+  - [Min Stack](#min-stack)
 
 
 ## Find a prime number in an array
@@ -120,6 +121,8 @@ function undo() {
 
 ## Matching Brackets
 
+
+
 ```js
 function isValid(s) {
   const stack = [];
@@ -134,4 +137,64 @@ function isValid(s) {
   }
   return stack.length === 0;
 }
+```
+
+## Min Stack
+
+[Min stack leetcode problem](https://leetcode.com/problems/min-stack/description/)
+
+| Stack |	Purpose|
+|---|---|
+|mainStack | Stores all values |
+|minStack |	Tracks current minimums|
+
+```js
+class MinStack {
+  constructor() {
+    this.mainStack = [];
+    this.minStack = [];
+  }
+
+  push(value) {
+    this.mainStack.push(value);
+    if (
+      this.minStack.length === 0 ||
+      value <= this.getMin()
+    ) {
+      this.minStack.push(value);
+    }
+  }
+
+  pop() {
+    const removed = this.mainStack.pop();
+    if (removed === this.getMin()) {
+      this.minStack.pop();
+    }
+    return removed;
+  }
+
+  peek() {
+    return this.mainStack[this.mainStack.length - 1];
+  }
+
+  getMin() {
+    return this.minStack[this.minStack.length - 1];
+  }
+
+  size() {
+    return this.mainStack.length;
+  }
+}
+
+// Example usage
+const stack = new MinStack();
+stack.push(5);
+stack.push(3);
+stack.push(7);
+console.log(stack.getMin()); // 3
+stack.pop();
+console.log(stack.getMin()); // 3
+stack.pop();
+console.log(stack.getMin()); // 5
+
 ```
