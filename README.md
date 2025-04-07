@@ -119,9 +119,10 @@ function undo() {
 }
 ```
 
-## Matching Brackets
+## Matching Brackets - Valid Parenthesis
 
-
+- Time complexity - O(n)
+- Space complexity - O(n) `minStack` tracks min values
 
 ```js
 function isValid(s) {
@@ -142,6 +143,9 @@ function isValid(s) {
 ## Min Stack
 
 [Min stack leetcode problem](https://leetcode.com/problems/min-stack/description/)
+
+- Time complexity - O(1) per *operation*
+- Space complexity - O(n) `minStack` tracks min values
 
 | Stack |	Purpose|
 |---|---|
